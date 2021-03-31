@@ -8,8 +8,8 @@ const galleryModalImage = document.querySelector(".lightbox__image");
 let galleryItems = [];
 
 gallery.forEach((el, index) => {
-  const tempElementString = `<li>
-    <a href = "${el.original}">
+  const tempElementString = `<li class="gallery__item">
+    <a href = "${el.original}" class="gallery__link">
         <img
         class="gallery__image"
         src="${el.preview}"
@@ -40,11 +40,12 @@ const makeMarkup = function (e) {
 // потом из нее же выбираю объекты картинок
 // imageList = galleryList.querySelectorAll("img") ?
 
-const arrowFunction = (e) => {
+const keyboardFunction = (e) => {
   const imageList = galleryList.querySelectorAll("img");
   let nextImageId = +imageList[
     galleryModalImage.getAttribute("id")
   ].getAttribute("id");
+
   if (e.code === "Escape") {
     closeModal(e);
   } else if (e.code === "ArrowRight") {
@@ -73,7 +74,7 @@ const arrowFunction = (e) => {
 const openModal = () => {
   galleryModal.classList.add("is-open");
   galleryModal.addEventListener("click", closeModal);
-  window.addEventListener("keyup", arrowFunction);
+  window.addEventListener("keyup", keyboardFunction);
   galleryList.removeEventListener("click", makeMarkup);
 };
 
@@ -85,7 +86,7 @@ const closeModal = (e) => {
   galleryModal.classList.remove("is-open");
   galleryList.addEventListener("click", makeMarkup);
   galleryModal.removeEventListener("click", closeModal);
-  window.removeEventListener("keyup", arrowFunction);
+  window.removeEventListener("keyup", keyboardFunction);
   galleryModalImage.setAttribute("src", "");
   galleryModalImage.setAttribute("alt", "");
 };
