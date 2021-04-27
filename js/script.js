@@ -41,6 +41,7 @@ const makeMarkup = function (e) {
 // imageList = galleryList.querySelectorAll("img") ?
 
 const keyboardFunction = (e) => {
+  // console.log(e.target.firstElementChild.id);
   const imageList = galleryList.querySelectorAll("img");
   let nextImageId = +imageList[
     galleryModalImage.getAttribute("id")
@@ -92,3 +93,86 @@ const closeModal = (e) => {
 };
 
 galleryList.addEventListener("click", makeMarkup);
+
+// -------------------------------------
+
+// import gallery from "./gallery-items.js";
+
+// const galleryList = document.querySelector(".js-gallery");
+// const galleryModal = document.querySelector(".js-lightbox");
+// const bigPicture = document.querySelector(".lightbox__image");
+// const overlay = document.querySelector(".lightbox__overlay");
+// const closeBtn = document.querySelector(".lightbox__button");
+// gallery.forEach((el, index) => {
+//   const listRef = `<li class="gallery__item">
+// <a
+//   class="gallery__link"
+//   href="${el.original}"
+// >
+//   <img
+//     class="gallery__image"
+//     src="${el.preview}"
+//     data-source="${el.original}"
+//     alt="${el.description}"
+//     data-index="${index}"
+//   />
+// </a>
+// </li>`;
+
+//   galleryList.insertAdjacentHTML("beforeend", listRef);
+// });
+// const makeMarkupModal = (e) => {
+//   e.preventDefault();
+//   if (e.target.nodeName !== "IMG") {
+//     return;
+//   }
+//   bigPicture.src = e.target.dataset.source;
+//   bigPicture.alt = e.target.alt;
+//   onModalOpen();
+// };
+// const onModalOpen = () => {
+//   galleryModal.classList.add("is-open");
+//   window.addEventListener("keydown", onEscClick);
+//   window.addEventListener("keydown", onkeyboardsClick);
+// };
+// const closeModal = (e) => {
+//   galleryModal.classList.remove("is-open");
+//   bigPicture.src = "";
+//   bigPicture.alt = "";
+//   window.removeEventListener("keydown", onEscClick);
+//   window.removeEventListener("keydown", onkeyboardsClick);
+// };
+// const onEscClick = (e) => {
+//   if (e.key === "Escape") {
+//     closeModal();
+//   }
+// };
+// const onOverlayClick = (e) => {
+//   if (e.target === overlay) {
+//     closeModal();
+//   }
+// };
+// const onkeyboardsClick = (e) => {
+//   let i = +e.target.firstElementChild.dataset.index;
+//   console.log(e.target.firstElementChild);
+//   if (e.key === "keyboardLeft" && i > 0) {
+//     i -= 1;
+//     slider(e, i);
+//   } else if (e.key === "keyboardLeft" && i === 0) {
+//     i = gallery.length - 1;
+//     slider(e, i);
+//   } else if (e.key === "keyboardRight" && i < gallery.length - 1) {
+//     i += 1;
+//     slider(e, i);
+//   } else if (e.key === "keyboardRight" && i === gallery.length - 1) {
+//     i = 0;
+//     slider(e, i);
+//   }
+// };
+// const slider = (e, index) => {
+//   e.target.firstElementChild.dataset.index = index;
+//   bigPicture.src = gallery[index].original;
+// };
+// galleryList.addEventListener("click", makeMarkupModal);
+// closeBtn.addEventListener("click", closeModal);
+// galleryModal.addEventListener("click", onOverlayClick);
